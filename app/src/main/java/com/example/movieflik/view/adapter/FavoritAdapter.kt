@@ -11,7 +11,7 @@ import com.example.movieflik.databinding.ItemFavBinding
 import com.example.movieflik.model.MovieDetail
 import com.example.movieflik.network.local.ItemFavorit
 
-class FavoritAdapter (private var listMoviePopular: List<ItemFavorit>) : RecyclerView.Adapter<FavoritAdapter.ViewHolder>() {
+class FavoritAdapter(private var listMoviePopular: List<ItemFavorit>) : RecyclerView.Adapter<FavoritAdapter.ViewHolder>() {
     class ViewHolder(var binding: ItemFavBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,7 +29,19 @@ class FavoritAdapter (private var listMoviePopular: List<ItemFavorit>) : Recycle
             .load("https://image.tmdb.org/t/p/w780${movie.pathPoster}")
             .into(holder.binding.ivTopRated)
 
+        holder.binding.movieDetail.setOnClickListener {
+            val id = listMoviePopular[position].id
+            val imagepath = listMoviePopular[position].pathPoster
+            val title = listMoviePopular[position].judul
+            val date =listMoviePopular[position].tanggalRilis
+            val overview = listMoviePopular[position].overview
+            val detail = MovieDetail(id,imagepath,title,date,overview)
 
+            val data = Bundle()
+            data.putParcelable("data_movie",detail)
+            Navigation.findNavController(it).navigate(R.id.action_favoritFragment_to_detailFragment,data)
+
+        }
     }
 
     override fun getItemCount(): Int {
