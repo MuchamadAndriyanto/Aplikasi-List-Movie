@@ -46,11 +46,13 @@ class RegisterFragment : Fragment() {
         val email = binding.emailEditText.text.toString()
         val pass = binding.passwordEditText.text.toString()
 
-        val addAkun = sharedpref.edit()
-        addAkun.putString("username", username)
+        val editor = sharedpref.edit()
+        editor.putString("username", username)
+        editor.putString("email", email)
+        editor.apply()
 
         if (username.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty()) {
-            addAkun.apply()
+
             firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment)

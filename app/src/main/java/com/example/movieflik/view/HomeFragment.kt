@@ -35,10 +35,10 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        pref = requireActivity().getSharedPreferences("Register", Context.MODE_PRIVATE)
+        val pref = requireActivity().getSharedPreferences("Register", Context.MODE_PRIVATE)
         val username = pref.getString("username", "username")
+
         binding.tvWelcome.text = "Welcome, $username"
 
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
