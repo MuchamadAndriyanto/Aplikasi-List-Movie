@@ -74,7 +74,7 @@ class ProfileFragment : Fragment() {
             Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_loginFragment)
         }
 
-        binding.pickImageButton.setOnClickListener {
+        binding.btnCamera.setOnClickListener {
             pickImageFromGallery()
         }
 
