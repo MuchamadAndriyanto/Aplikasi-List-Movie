@@ -19,7 +19,6 @@ class FavoritFragment : Fragment() {
 
     private lateinit var binding : FragmentFavoritBinding
     private lateinit var viewModel: FavoritViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,7 +26,6 @@ class FavoritFragment : Fragment() {
         binding = FragmentFavoritBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -35,7 +33,6 @@ class FavoritFragment : Fragment() {
         movieFavorit()
 
     }
-
     private fun movieFavorit() {
         binding.rvFavorite.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvFavorite.setHasFixedSize(false)

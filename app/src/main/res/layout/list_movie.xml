@@ -1,59 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:id="@+id/movieDetail"
     android:background="@color/background"
-    android:layout_marginBottom="15dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:id="@+id/movieDetail"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="100dp"
-        android:layout_height="130dp"
-        app:cardCornerRadius="10dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivTopRated"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:src="@tools:sample/backgrounds/scenic"
-            android:scaleType="fitXY"
-            tools:ignore="ContentDescription" />
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="5dp">
 
-    </com.google.android.material.card.MaterialCardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/backgroud_color"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp">
 
-    <LinearLayout
-        android:id="@+id/layout_content_film"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:padding="10dp"
+                    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_title_upcoming"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/iv_poster_image"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="10dp"
-            tools:text="Guardians of the Galaxy Volume 3"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="UselessParent">
 
-        <TextView
-            android:id="@+id/tv_release_date_upcoming"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/button"
-            tools:text="Release Date : 2023-05-03"
-            />
+                        <TextView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Naruto"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
 
+                        <TextView
+                            android:id="@+id/tvOverview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_below="@+id/tvTitle"
+                            android:layout_marginTop="10dp"
+                            android:text="overview"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
 
-    </LinearLayout>
+                    </RelativeLayout>
 
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="90dp"
+            android:layout_height="150dp"
+            android:layout_gravity="start|center"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="7dp"
+            android:gravity="center"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="3dp">
+
+            <ImageView
+                android:id="@+id/imgPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_profile" />
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
 </LinearLayout>

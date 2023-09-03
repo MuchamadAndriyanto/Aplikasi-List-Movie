@@ -14,6 +14,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.example.movieflik.R
 import com.example.movieflik.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +26,7 @@ class ProfileFragment : Fragment() {
     private lateinit var sharedpref: SharedPreferences
 
     companion object {
-        val IMAGE_REQUEST_CODE = 1_000
+        const val IMAGE_REQUEST_CODE = 1_000
     }
 
     override fun onCreateView(
@@ -34,7 +36,6 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,7 +83,7 @@ class ProfileFragment : Fragment() {
         val imageUriString = sharedPref.getString("imageUri", null)
         if (imageUriString != null) {
             val imageUri = Uri.parse(imageUriString)
-            Glide.with(this).load(imageUri).into(binding.ivBack)
+            loadImageWithCircleCrop(imageUri)
         }
     }
 
@@ -95,7 +96,9 @@ class ProfileFragment : Fragment() {
             val editor = sharedPref.edit()
             editor.putString("imageUri", imageUri.toString())
             editor.apply()
-            Glide.with(this).load(imageUri).into(binding.ivBack)
+
+            // Load gambar ke ivPerson dan terapkan CircleCrop
+            imageUri?.let { loadImageWithCircleCrop(it) }
         }
     }
 
@@ -105,4 +108,10 @@ class ProfileFragment : Fragment() {
         startActivityForResult(intent, IMAGE_REQUEST_CODE)
     }
 
+    private fun loadImageWithCircleCrop(imageUri: Uri) {
+        Glide.with(this)
+            .load(imageUri)
+            .apply(RequestOptions.bitmapTransform(CircleCrop()))
+            .into(binding.ivPerson)
+    }
 }

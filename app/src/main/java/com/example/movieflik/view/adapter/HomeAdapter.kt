@@ -30,8 +30,9 @@ class HomeAdapter (private var listMoviePopular : List<Result>) : RecyclerView.A
             val imagepath = listMoviePopular[position].poster_path
             val title = listMoviePopular[position].title
             val date =listMoviePopular[position].release_date
+            val popularty = listMoviePopular[position].popularity
             val overview = listMoviePopular[position].overview
-            val detail = MovieDetail(id,imagepath,title,date,overview)
+            val detail = MovieDetail(id,imagepath,title,date,popularty,overview)
 
             val data = Bundle()
             data.putParcelable("data_movie",detail)

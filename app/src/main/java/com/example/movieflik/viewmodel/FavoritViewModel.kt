@@ -17,7 +17,8 @@ class FavoritViewModel(application: Application) : AndroidViewModel(application)
             itemFavorit.title,
             itemFavorit.date,
             itemFavorit.imagepath,
-            itemFavorit.overview
+            itemFavorit.overview,
+            itemFavorit.popularity
         )
         itemFavoritDao.tambahItemFavorit(favoriteItem)
     }
@@ -36,7 +37,8 @@ class FavoritViewModel(application: Application) : AndroidViewModel(application)
             itemFavorit.title,
             itemFavorit.date,
             itemFavorit.imagepath,
-            itemFavorit.overview
+            itemFavorit.overview,
+            itemFavorit.popularity
         )
         itemFavoritDao.hapusItemFavorit(favoriteItem)
     }

@@ -36,16 +36,17 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.ivBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
 
         movieDetail = arguments?.getParcelable<MovieDetail>("data_movie") as MovieDetail
-
         Glide.with(context).load("https://image.tmdb.org/t/p/w780${movieDetail.imagepath}")
             .into(binding.ivPosterImage)
-        binding.tvTitle.text = movieDetail.title
-        binding.tvReleaseDate.text = movieDetail.date
+
+        Glide.with(context).load("https://image.tmdb.org/t/p/w780${movieDetail.imagepath}")
+            .into(binding.imgPhoto)
+
+        binding.tvNaruto.text = movieDetail.title
+        binding.tvRelease.text = movieDetail.date
+        binding.tvPopularity.text = movieDetail.popularity.toString()
         binding.tvOverview.text = movieDetail.overview
 
         viewModel = ViewModelProvider(this).get(FavoritViewModel::class.java)

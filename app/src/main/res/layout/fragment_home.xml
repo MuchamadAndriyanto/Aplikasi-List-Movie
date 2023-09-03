@@ -87,7 +87,7 @@
 
     <TextView
         android:id="@+id/tvTopRated"
-        android:text="Film TopRated"
+        android:text="Film Rekomen"
         android:textColor="@color/button"
         android:textStyle="bold"
         android:layout_marginTop="15dp"
@@ -103,6 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        tools:listitem="@layout/list_movie"
         android:layout_below="@id/tvTopRated"
         android:layout_marginStart="17dp"
         />

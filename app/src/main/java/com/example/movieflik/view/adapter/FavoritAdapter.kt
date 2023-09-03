@@ -11,7 +11,7 @@ import com.example.movieflik.databinding.ItemFavBinding
 import com.example.movieflik.model.MovieDetail
 import com.example.movieflik.network.local.ItemFavorit
 
-class FavoritAdapter(private var listMoviePopular: List<ItemFavorit>) : RecyclerView.Adapter<FavoritAdapter.ViewHolder>() {
+class FavoritAdapter(private var listMovieFav: List<ItemFavorit>) : RecyclerView.Adapter<FavoritAdapter.ViewHolder>() {
     class ViewHolder(var binding: ItemFavBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,22 +20,23 @@ class FavoritAdapter(private var listMoviePopular: List<ItemFavorit>) : Recycler
     }
 
     override fun onBindViewHolder(holder: FavoritAdapter.ViewHolder, position: Int) {
-        val movie = listMoviePopular[position]
+        val movie = listMovieFav[position]
 
-        holder.binding.tvTitleUpcoming.text = movie.judul
-        holder.binding.tvReleaseDateUpcoming.text = movie.tanggalRilis
+        holder.binding.tvTitle.text = movie.judul
+        holder.binding.tvOverview.text = movie.overview
 
         Glide.with(holder.itemView)
             .load("https://image.tmdb.org/t/p/w780${movie.pathPoster}")
-            .into(holder.binding.ivTopRated)
+            .into(holder.binding.imgPhoto)
 
         holder.binding.movieDetail.setOnClickListener {
-            val id = listMoviePopular[position].id
-            val imagepath = listMoviePopular[position].pathPoster
-            val title = listMoviePopular[position].judul
-            val date =listMoviePopular[position].tanggalRilis
-            val overview = listMoviePopular[position].overview
-            val detail = MovieDetail(id,imagepath,title,date,overview)
+            val id = listMovieFav[position].id
+            val imagepath = listMovieFav[position].pathPoster
+            val title = listMovieFav[position].judul
+            val date = listMovieFav[position].tanggalRilis
+            val popularty = listMovieFav[position].popularty
+            val overview = listMovieFav[position].overview
+            val detail = MovieDetail(id,imagepath,title,date,popularty,overview)
 
             val data = Bundle()
             data.putParcelable("data_movie",detail)
@@ -45,6 +46,6 @@ class FavoritAdapter(private var listMoviePopular: List<ItemFavorit>) : Recycler
     }
 
     override fun getItemCount(): Int {
-        return listMoviePopular.size
+        return listMovieFav.size
     }
 }

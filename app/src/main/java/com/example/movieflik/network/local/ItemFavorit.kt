@@ -18,5 +18,7 @@ data class ItemFavorit(
     @ColumnInfo(name = "path_poster")
     var pathPoster: String,
     @ColumnInfo(name = "overview")
-    var overview: String
+    var overview: String,
+    @ColumnInfo(name = "popularty")
+    var popularty: Double,
 ) : Parcelable

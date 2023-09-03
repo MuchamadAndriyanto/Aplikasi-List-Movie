@@ -35,11 +35,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
-        android:id="@+id/ivBack"
-        android:src="@drawable/ic_launcher_foreground"
+        android:id="@+id/ivPerson"
+        android:src="@drawable/baseline_person_24"
         android:layout_gravity="center"
         android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/circle_background"
+        android:contentDescription="Profile Image"
         tools:ignore="ContentDescription" />
 
     <Button
@@ -47,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="Pick Image"
         />
 

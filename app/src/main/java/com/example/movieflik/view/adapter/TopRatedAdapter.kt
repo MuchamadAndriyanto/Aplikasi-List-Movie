@@ -21,19 +21,20 @@ class TopRatedAdapter  (private var listMovieTopRated : List<ResultX>) : Recycle
     }
 
     override fun onBindViewHolder(holder: TopRatedAdapter.ViewHolder, position: Int) {
-        holder.binding.tvTitleUpcoming.text = listMovieTopRated[position].title
-        holder.binding.tvReleaseDateUpcoming.text = listMovieTopRated[position].release_date
+        holder.binding.tvTitle.text = listMovieTopRated[position].title
+        holder.binding.tvOverview.text = listMovieTopRated[position].overview
 
         Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/w780${listMovieTopRated[position].poster_path}")
-            .into(holder.binding.ivTopRated)
+            .into(holder.binding.imgPhoto)
 
         holder.binding.movieDetail.setOnClickListener {
             val id = listMovieTopRated[position].id
             val imagepath = listMovieTopRated[position].poster_path
             val title = listMovieTopRated[position].title
             val date =listMovieTopRated[position].release_date
+            val popularty = listMovieTopRated[position].popularity
             val overview = listMovieTopRated[position].overview
-            val detail = MovieDetail(id,imagepath,title,date,overview)
+            val detail = MovieDetail(id,imagepath,title,date,popularty,overview)
 
             val data = Bundle()
             data.putParcelable("data_movie",detail)
