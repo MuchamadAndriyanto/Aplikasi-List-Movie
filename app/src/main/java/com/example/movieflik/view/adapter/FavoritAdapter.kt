@@ -22,7 +22,7 @@ class FavoritAdapter(private var listMovieFav: List<ItemFavorit>) : RecyclerView
     override fun onBindViewHolder(holder: FavoritAdapter.ViewHolder, position: Int) {
         val movie = listMovieFav[position]
 
-        holder.binding.tvTitle.text = movie.judul
+        holder.binding.tvTitle.text = movie.title
         holder.binding.tvOverview.text = movie.overview
 
         Glide.with(holder.itemView)
@@ -32,8 +32,8 @@ class FavoritAdapter(private var listMovieFav: List<ItemFavorit>) : RecyclerView
         holder.binding.movieDetail.setOnClickListener {
             val id = listMovieFav[position].id
             val imagepath = listMovieFav[position].pathPoster
-            val title = listMovieFav[position].judul
-            val date = listMovieFav[position].tanggalRilis
+            val title = listMovieFav[position].title
+            val date = listMovieFav[position].releaseDate
             val popularty = listMovieFav[position].popularty
             val overview = listMovieFav[position].overview
             val detail = MovieDetail(id,imagepath,title,date,popularty,overview)

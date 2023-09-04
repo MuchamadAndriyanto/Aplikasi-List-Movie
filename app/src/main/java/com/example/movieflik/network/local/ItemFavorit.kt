@@ -11,10 +11,10 @@ import kotlinx.parcelize.Parcelize
 data class ItemFavorit(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    @ColumnInfo(name = "judul")
-    var judul: String,
-    @ColumnInfo(name = "tanggal_rilis")
-    var tanggalRilis: String,
+    @ColumnInfo(name = "title")
+    var title: String,
+    @ColumnInfo(name = "release_date")
+    var releaseDate: String,
     @ColumnInfo(name = "path_poster")
     var pathPoster: String,
     @ColumnInfo(name = "overview")

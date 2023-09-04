@@ -41,16 +41,7 @@
                 android:textColor="@color/button"
                 tools:ignore="HardcodedText" />
 
-            <ImageButton
-                android:id="@+id/btnFavorit"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_favorite_black"
-                android:layout_gravity="end"
-                android:layout_marginEnd="25dp"
-                android:background="@android:color/transparent"
-                android:onClick="onFavoritButtonClick"
-                tools:ignore="ContentDescription,UseAppTint" />
+
         </androidx.appcompat.widget.Toolbar>
 
         <View
@@ -201,11 +192,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
+                        <ImageButton
+                            android:id="@+id/btnFavorit"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/ic_favorite_black"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="-5dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@android:color/transparent"
+                            android:onClick="onFavoritButtonClick"
+                            tools:ignore="ContentDescription,UseAppTint" />
+
                         <TextView
                             android:id="@+id/tvRD"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tanggal Rilis :"
+                            android:text="Release Date :"
                             android:textColor="@android:color/white"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -231,7 +234,7 @@
                             android:id="@+id/tvKP"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Kepopuleran :"
+                            android:text="Popularity :"
                             android:textColor="@android:color/white"
                             android:textSize="15sp"
                             android:textStyle="bold" />

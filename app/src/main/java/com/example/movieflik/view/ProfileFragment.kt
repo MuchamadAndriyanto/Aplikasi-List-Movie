@@ -51,6 +51,7 @@ class ProfileFragment : Fragment() {
 
         val firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth.currentUser
+        var userEmail: String? = null
 
         if (currentUser != null) {
             val userEmail = currentUser.email
@@ -60,7 +61,6 @@ class ProfileFragment : Fragment() {
 
         binding.btnClick.setOnClickListener {
             if (isDataVisible) {
-                // Jika data sedang ditampilkan, sembunyikan mereka dan putar tombol kembali ke posisi semula
                 val rotateAnimator = ObjectAnimator.ofFloat(binding.btnClick, "rotation", 90f, 0f)
                 rotateAnimator.duration = 250
                 rotateAnimator.start()
@@ -72,7 +72,6 @@ class ProfileFragment : Fragment() {
 
                 isDataVisible = false
             } else {
-                // Jika data tidak ditampilkan, tampilkan mereka dan putar tombol ke posisi ke bawah
                 val rotateAnimator = ObjectAnimator.ofFloat(binding.btnClick, "rotation", 0f, 90f)
                 rotateAnimator.duration = 250
                 rotateAnimator.start()
@@ -91,6 +90,9 @@ class ProfileFragment : Fragment() {
             val upusername = sharedpref.edit()
             upusername.putString("username", username)
             upusername.apply()
+
+            val userEmail = userEmail ?: ""
+            binding.tvemail.text = userEmail
 
             firebaseAuth.signOut()
             Toast.makeText(context, "Update Username Berhasil", Toast.LENGTH_SHORT).show()
