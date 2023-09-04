@@ -7,10 +7,69 @@
     android:background="@color/background"
     tools:context=".view.DetailFragment">
 
-    <ImageView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="@color/background"
+            android:minHeight="?attr/actionBarSize">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail"
+                android:textStyle="bold"
+                android:layout_marginStart="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/button"
+                tools:ignore="HardcodedText" />
+
+            <ImageButton
+                android:id="@+id/btnFavorit"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_favorite_black"
+                android:layout_gravity="end"
+                android:layout_marginEnd="25dp"
+                android:background="@android:color/transparent"
+                android:onClick="onFavoritButtonClick"
+                tools:ignore="ContentDescription,UseAppTint" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/bottom_nav_background"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.flaviofaria.kenburnsview.KenBurnsView
         android:id="@+id/iv_poster_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_below="@id/appBar"
+        android:layout_marginTop="-7dp"
+        android:layout_height="250dp"
         android:contentDescription="@string/image_app"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,17 +121,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 tools:ignore="UselessParent">
-
-                                <ImageButton
-                                    android:id="@+id/btnFavorit"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_marginEnd="5dp"
-                                    android:src="@drawable/ic_favorite"
-                                    android:background="@android:color/transparent"
-                                    android:onClick="onFavoritButtonClick"
-                                    tools:ignore="ContentDescription,UseAppTint" />
 
                                 <TextView
                                     android:id="@+id/tvNaruto"
@@ -159,7 +207,7 @@
                             android:layout_height="wrap_content"
                             android:text="Tanggal Rilis :"
                             android:textColor="@android:color/white"
-                            android:textSize="14sp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -185,7 +233,7 @@
                             android:layout_height="wrap_content"
                             android:text="Kepopuleran :"
                             android:textColor="@android:color/white"
-                            android:textSize="14sp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -211,7 +259,7 @@
                             android:layout_height="wrap_content"
                             android:text="Overview :"
                             android:textColor="@android:color/white"
-                            android:textSize="18sp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -234,18 +282,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="10dp"
-        app:cardBackgroundColor="@color/colorPrimary"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="3dp">
-
-
-    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

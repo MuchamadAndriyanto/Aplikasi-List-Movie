@@ -7,22 +7,22 @@
     android:background="@color/background"
     tools:context=".view.RegisterFragment">
 
+
     <ImageView
-        android:id="@+id/ivBack"
-        android:src="@drawable/ic_back"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
+        android:id="@+id/ivSplash"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/splash"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_below="@id/ivBack"
+        android:layout_below="@id/ivSplash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="Username"
         android:textColor="@color/white"
         android:textSize="17sp"
@@ -137,8 +137,8 @@
         android:padding="12dp"
         android:layout_below="@id/inputPassword"
         android:background="@drawable/button_radius"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
         app:backgroundTint="@null"
         android:text="Create Akun"
         tools:ignore="HardcodedText" />

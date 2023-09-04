@@ -1,5 +1,6 @@
 package com.example.movieflik.view
 
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -13,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
@@ -24,6 +26,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private lateinit var sharedpref: SharedPreferences
+    private var isDataVisible = false
 
     companion object {
         const val IMAGE_REQUEST_CODE = 1_000
@@ -44,7 +47,7 @@ class ProfileFragment : Fragment() {
 
         val getUserUsername = sharedpref.getString("username", "")
         Log.d("TAG", "Username: $getUserUsername")
-        binding.edtUsername.setText(getUserUsername)
+        binding.usernameEditText.setText(getUserUsername)
 
         val firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth.currentUser
@@ -55,8 +58,36 @@ class ProfileFragment : Fragment() {
             Log.d("TAG", "Email: $userEmail")
         }
 
+        binding.btnClick.setOnClickListener {
+            if (isDataVisible) {
+                // Jika data sedang ditampilkan, sembunyikan mereka dan putar tombol kembali ke posisi semula
+                val rotateAnimator = ObjectAnimator.ofFloat(binding.btnClick, "rotation", 90f, 0f)
+                rotateAnimator.duration = 250
+                rotateAnimator.start()
+
+                // Sembunyikan data
+                binding.tvemail.visibility = View.GONE
+                binding.tvUsername.visibility = View.GONE
+                binding.inputUsername.visibility = View.GONE
+
+                isDataVisible = false
+            } else {
+                // Jika data tidak ditampilkan, tampilkan mereka dan putar tombol ke posisi ke bawah
+                val rotateAnimator = ObjectAnimator.ofFloat(binding.btnClick, "rotation", 0f, 90f)
+                rotateAnimator.duration = 250
+                rotateAnimator.start()
+
+                // Tampilkan data
+                binding.tvemail.visibility = View.VISIBLE
+                binding.tvUsername.visibility = View.VISIBLE
+                binding.inputUsername.visibility = View.VISIBLE
+
+                isDataVisible = true
+            }
+        }
+
         binding.btnUpdate.setOnClickListener {
-            val username = binding.edtUsername.text.toString()
+            val username = binding.usernameEditText.text.toString()
             val upusername = sharedpref.edit()
             upusername.putString("username", username)
             upusername.apply()
@@ -72,6 +103,10 @@ class ProfileFragment : Fragment() {
             addUser.apply()
             Toast.makeText(context, "Anda Berhasil Logout", Toast.LENGTH_SHORT).show()
             Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_loginFragment)
+        }
+
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         binding.btnCamera.setOnClickListener {

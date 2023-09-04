@@ -65,7 +65,7 @@
 
     <TextView
         android:id="@+id/tvUpcoming"
-        android:text="Film Upcoming"
+        android:text="Movie Upcoming"
         android:textColor="@color/button"
         android:textStyle="bold"
         android:layout_marginTop="-5dp"
@@ -87,7 +87,7 @@
 
     <TextView
         android:id="@+id/tvTopRated"
-        android:text="Film Rekomen"
+        android:text="Movie Rekomendasi"
         android:textColor="@color/button"
         android:textStyle="bold"
         android:layout_marginTop="15dp"

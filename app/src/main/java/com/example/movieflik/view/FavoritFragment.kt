@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieflik.R
 import com.example.movieflik.databinding.FragmentFavoritBinding
@@ -31,6 +32,10 @@ class FavoritFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(FavoritViewModel::class.java)
         movieFavorit()
+
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
     private fun movieFavorit() {

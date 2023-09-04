@@ -36,9 +36,6 @@ class RegisterFragment : Fragment() {
             register()
         }
 
-        binding.ivBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
     }
 
     private fun register() {

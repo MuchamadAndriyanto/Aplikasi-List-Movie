@@ -22,16 +22,35 @@
             android:background="@color/background"
             android:minHeight="?attr/actionBarSize">
 
+            <ImageView
+                android:id="@+id/ivBack"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PROFILE"
+                android:text="Profile"
                 android:textStyle="bold"
+                android:layout_marginStart="25dp"
                 android:textSize="20sp"
-                android:layout_gravity="center"
                 android:textColor="@color/button"
                 tools:ignore="HardcodedText" />
         </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/bottom_nav_background"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
@@ -55,6 +74,35 @@
         android:layout_height="35dp"
         android:src="@drawable/baseline_camera_alt_24" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:gravity="start|center_vertical"
+            android:background="@drawable/bg_info"
+            app:backgroundTint="@null"
+            android:text="Masuk"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:id="@+id/btnClick"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/dashicons" />
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/tvemail"
         android:layout_width="wrap_content"
@@ -63,45 +111,50 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/button"
         android:textSize="15sp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Username"
-        android:textColor="@color/button"
+        android:textColor="@color/white"
         android:layout_marginHorizontal="16dp"
         android:textSize="16sp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="6dp"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:visibility="gone" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_username"
+        android:id="@+id/inputUsername"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="16dp"
-        app:boxCornerRadiusBottomEnd="@dimen/box_cornerd_radius"
-        app:boxCornerRadiusTopEnd="@dimen/box_cornerd_radius"
-        app:boxCornerRadiusBottomStart="@dimen/box_cornerd_radius"
-        app:boxCornerRadiusTopStart="@dimen/box_cornerd_radius"
-        app:boxStrokeColor="#FF722A"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:hintEnabled="true"
+        app:endIconMode="clear_text"
+        android:hint="Username"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        android:backgroundTint="@color/white"
+        tools:ignore="HardcodedText"
+        android:visibility="gone">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_username"
+            android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColorHint="#80D5D5D5"
-            android:textColor="@color/white"
-            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
             android:maxLines="1"
-            android:textSize="18sp"
-            android:padding="5dp"/>
+            android:singleLine="true"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
+
+        <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
