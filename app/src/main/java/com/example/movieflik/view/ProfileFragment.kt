@@ -54,9 +54,18 @@ class ProfileFragment : Fragment() {
         var userEmail: String? = null
 
         if (currentUser != null) {
-            val userEmail = currentUser.email
-            binding.tvemail.text = userEmail
+            userEmail = currentUser.email
+            binding.tvEmail.text = userEmail
             Log.d("TAG", "Email: $userEmail")
+
+            //menyimpan dan mengambil kembali URI gambar
+            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            val emailKey = "imageUri_${currentUser?.email}"
+            val imageUriString = sharedPref.getString(emailKey, null)
+            if (imageUriString != null) {
+                val imageUri = Uri.parse(imageUriString)
+                loadImageWithCircleCrop(imageUri)
+            }
         }
 
         binding.btnClick.setOnClickListener {
@@ -66,7 +75,7 @@ class ProfileFragment : Fragment() {
                 rotateAnimator.start()
 
                 // Sembunyikan data
-                binding.tvemail.visibility = View.GONE
+                binding.tvEmail.visibility = View.GONE
                 binding.tvUsername.visibility = View.GONE
                 binding.inputUsername.visibility = View.GONE
 
@@ -77,7 +86,7 @@ class ProfileFragment : Fragment() {
                 rotateAnimator.start()
 
                 // Tampilkan data
-                binding.tvemail.visibility = View.VISIBLE
+                binding.tvEmail.visibility = View.VISIBLE
                 binding.tvUsername.visibility = View.VISIBLE
                 binding.inputUsername.visibility = View.VISIBLE
 
@@ -91,8 +100,8 @@ class ProfileFragment : Fragment() {
             upusername.putString("username", username)
             upusername.apply()
 
-            val userEmail = userEmail ?: ""
-            binding.tvemail.text = userEmail
+            userEmail = userEmail ?: ""
+            binding.tvEmail.text = userEmail
 
             firebaseAuth.signOut()
             Toast.makeText(context, "Update Username Berhasil", Toast.LENGTH_SHORT).show()
@@ -114,14 +123,6 @@ class ProfileFragment : Fragment() {
         binding.btnCamera.setOnClickListener {
             pickImageFromGallery()
         }
-
-        //menyimpan dan mengambil kembali URI gambar
-        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
-        val imageUriString = sharedPref.getString("imageUri", null)
-        if (imageUriString != null) {
-            val imageUri = Uri.parse(imageUriString)
-            loadImageWithCircleCrop(imageUri)
-        }
     }
 
     @Deprecated("Deprecated in Java")
@@ -129,13 +130,19 @@ class ProfileFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val imageUri = data?.data
-            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
-            val editor = sharedPref.edit()
-            editor.putString("imageUri", imageUri.toString())
-            editor.apply()
+            val firebaseAuth = FirebaseAuth.getInstance()
+            val currentUser = firebaseAuth.currentUser
 
-            // Load gambar ke ivPerson dan terapkan CircleCrop
-            imageUri?.let { loadImageWithCircleCrop(it) }
+            if (currentUser != null) {
+                val emailKey = "imageUri_${currentUser.email}"
+                val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString(emailKey, imageUri.toString())
+                editor.apply()
+
+                // Load gambar ke ivPerson dan terapkan CircleCrop
+                imageUri?.let { loadImageWithCircleCrop(it) }
+            }
         }
     }
 

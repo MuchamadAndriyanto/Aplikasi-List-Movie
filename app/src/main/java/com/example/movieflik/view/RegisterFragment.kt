@@ -36,6 +36,10 @@ class RegisterFragment : Fragment() {
             register()
         }
 
+        binding.btnLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
+
     }
 
     private fun register() {
@@ -43,15 +47,15 @@ class RegisterFragment : Fragment() {
         val email = binding.emailEditText.text.toString()
         val pass = binding.passwordEditText.text.toString()
 
-        val editor = sharedpref.edit()
-        editor.putString("username", username)
-        editor.putString("email", email)
-        editor.apply()
-
         if (username.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty()) {
 
             firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    val editor = sharedpref.edit()
+                    editor.putString("username", username)
+                    editor.putString("email", email)
+                    editor.apply()
+
                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                 } else {
                     Toast.makeText(context, task.exception?.message, Toast.LENGTH_SHORT).show()

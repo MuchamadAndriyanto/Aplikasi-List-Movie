@@ -7,11 +7,58 @@
     android:background="@color/background"
     tools:context=".view.RegisterFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="@color/background"
+            android:minHeight="?attr/actionBarSize">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textStyle="bold"
+                android:layout_marginStart="25dp"
+                android:textSize="20sp"
+                android:textColor="@color/favoritColor"
+                tools:ignore="HardcodedText" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/bottom_nav_background"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <ImageView
         android:id="@+id/ivSplash"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_below="@id/appBar"
         android:layout_centerHorizontal="true"
         android:src="@drawable/splash"
         tools:ignore="ContentDescription" />
@@ -21,8 +68,8 @@
         android:layout_below="@id/ivSplash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="10dp"
         android:text="Username"
         android:textColor="@color/white"
         android:textSize="17sp"
@@ -33,8 +80,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
         app:hintEnabled="true"
         android:layout_below="@id/tvName"
         app:endIconMode="clear_text"
@@ -58,7 +105,7 @@
         android:id="@+id/tvEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="43dp"
         android:layout_marginTop="10dp"
         android:layout_below="@id/inputUsername"
         android:text="Email"
@@ -71,8 +118,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
         app:hintEnabled="true"
         android:layout_below="@id/tvEmail"
         app:endIconMode="clear_text"
@@ -96,7 +143,7 @@
         android:id="@+id/tvPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="43dp"
         android:layout_marginTop="10dp"
         android:text="Password"
         android:layout_below="@id/inputEmail"
@@ -110,8 +157,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_below="@id/tvPass"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
         app:hintEnabled="true"
         app:endIconMode="password_toggle"
         android:hint="Password"
@@ -137,8 +184,8 @@
         android:padding="12dp"
         android:layout_below="@id/inputPassword"
         android:background="@drawable/button_radius"
-        android:layout_marginStart="45dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginEnd="105dp"
         app:backgroundTint="@null"
         android:text="Create Akun"
         tools:ignore="HardcodedText" />

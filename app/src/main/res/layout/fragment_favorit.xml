@@ -38,7 +38,7 @@
                 android:textStyle="bold"
                 android:layout_marginStart="25dp"
                 android:textSize="20sp"
-                android:textColor="@color/button"
+                android:textColor="@color/favoritColor"
                 tools:ignore="HardcodedText" />
         </androidx.appcompat.widget.Toolbar>
 

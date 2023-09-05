@@ -27,6 +27,7 @@ class FavoritFragment : Fragment() {
         binding = FragmentFavoritBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,6 +39,7 @@ class FavoritFragment : Fragment() {
         }
 
     }
+
     private fun movieFavorit() {
         binding.rvFavorite.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvFavorite.setHasFixedSize(false)

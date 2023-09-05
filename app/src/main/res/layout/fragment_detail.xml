@@ -38,7 +38,7 @@
                 android:textStyle="bold"
                 android:layout_marginStart="25dp"
                 android:textSize="20sp"
-                android:textColor="@color/button"
+                android:textColor="@color/favoritColor"
                 tools:ignore="HardcodedText" />
 
 
@@ -122,6 +122,7 @@
                                     android:text="Naruto"
                                     android:textColor="@android:color/white"
                                     android:textSize="14sp"
+                                    android:textStyle="bold"
                                     tools:ignore="HardcodedText" />
 
 <!--                                <TextView-->
@@ -220,7 +221,7 @@
                             android:layout_below="@+id/tvRD"
                             android:text="Alumni"
                             android:layout_marginTop="5dp"
-                            android:textColor="@color/button"
+                            android:textColor="@color/favoritColor"
                             android:textSize="12sp" />
 
                     </RelativeLayout>
@@ -246,7 +247,7 @@
                             android:layout_below="@+id/tvKP"
                             android:text="woy"
                             android:layout_marginTop="5dp"
-                            android:textColor="@color/button"
+                            android:textColor="@color/favoritColor"
                             android:textSize="12sp" />
 
                     </RelativeLayout>

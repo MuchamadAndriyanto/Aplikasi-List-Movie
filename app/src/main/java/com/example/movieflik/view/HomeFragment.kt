@@ -25,7 +25,6 @@ class HomeFragment : Fragment() {
     private lateinit var pref: SharedPreferences
     private lateinit var viewModel: HomeViewModel
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -38,7 +38,7 @@
                 android:textStyle="bold"
                 android:layout_marginStart="25dp"
                 android:textSize="20sp"
-                android:textColor="@color/button"
+                android:textColor="@color/favoritColor"
                 tools:ignore="HardcodedText" />
         </androidx.appcompat.widget.Toolbar>
 
@@ -68,10 +68,10 @@
         android:id="@+id/btnCamera"
         android:layout_marginTop="-40dp"
         android:layout_marginStart="240dp"
-        android:layout_width="35dp"
+        android:layout_width="40dp"
         android:padding="10dp"
         android:background="@drawable/circle_background"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:src="@drawable/baseline_camera_alt_24" />
 
     <RelativeLayout
@@ -104,7 +104,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tvemail"
+        android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="darman@gmail.com"
@@ -116,7 +116,7 @@
          />
 
     <TextView
-        android:id="@+id/tv_username"
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Username"
@@ -124,7 +124,7 @@
         android:layout_marginHorizontal="16dp"
         android:textSize="16sp"
         android:visibility="gone"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="43dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="6dp"
         tools:ignore="HardcodedText"
@@ -158,33 +158,29 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_update"
-        android:layout_width="match_parent"
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="150dp"
         android:padding="12dp"
-        android:background="@drawable/button_radius"
-        android:layout_marginStart="135dp"
-        android:layout_marginEnd="135dp"
+        android:background="@drawable/bg_info"
+        android:layout_marginStart="45dp"
         app:backgroundTint="@null"
-        android:text="Update Data"
+        android:text="Update"
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:padding="12dp"
-        android:background="@drawable/button_radius"
-        android:layout_marginStart="135dp"
-        android:layout_marginEnd="135dp"
+        android:background="@drawable/bg_info"
+        android:layout_marginStart="45dp"
         app:backgroundTint="@null"
         android:text="Logout"
         tools:ignore="HardcodedText" />
-
 
 
 </LinearLayout>
