@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:gravity="start|center_vertical"
+            android:gravity="center"
             android:background="@drawable/bg_info"
             app:backgroundTint="@null"
             android:text="My Info"
@@ -179,7 +179,7 @@
         android:background="@drawable/bg_info"
         android:layout_marginStart="45dp"
         app:backgroundTint="@null"
-        android:text="Logout"
+        android:text="Sign Out"
         tools:ignore="HardcodedText" />
 
 

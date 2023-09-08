@@ -12,7 +12,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.movieflik.R
 import com.example.movieflik.databinding.FragmentSplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
 
     lateinit var binding: FragmentSplashBinding
@@ -29,7 +31,7 @@ class SplashFragment : Fragment() {
             sharedSplash =
                 requireContext().getSharedPreferences("dataregistrasi", Context.MODE_PRIVATE)
             if (sharedSplash.getString("nama", "").equals("")) {
-                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment2)
             }else if (sharedSplash.getString("nama", "")!!.isNotEmpty()) {
                 findNavController().navigate(R.id.action_splashFragment_to_homeFragment2)
             }

@@ -14,8 +14,9 @@ import com.example.movieflik.databinding.FragmentHomeBinding
 import com.example.movieflik.view.adapter.FavoritAdapter
 import com.example.movieflik.view.adapter.TopRatedAdapter
 import com.example.movieflik.viewmodel.FavoritViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FavoritFragment : Fragment() {
 
     private lateinit var binding : FragmentFavoritBinding

@@ -12,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.movieflik.R
 import com.example.movieflik.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
@@ -39,6 +41,11 @@ class RegisterFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
+
+        binding.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
 
     }
 

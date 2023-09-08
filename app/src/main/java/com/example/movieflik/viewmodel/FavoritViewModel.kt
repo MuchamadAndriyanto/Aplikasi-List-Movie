@@ -7,8 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.example.movieflik.model.MovieDetail
 import com.example.movieflik.network.local.DbModule
 import com.example.movieflik.network.local.ItemFavorit
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FavoritViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class FavoritViewModel  @Inject constructor(application: Application) : AndroidViewModel(application) {
     private val itemFavoritDao = DbModule(application.applicationContext).itemFavoritDao
 
     fun tambahItemFavorit(itemFavorit: MovieDetail) {

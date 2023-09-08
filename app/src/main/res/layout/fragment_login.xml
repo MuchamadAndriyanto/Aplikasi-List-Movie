@@ -140,7 +140,7 @@
         android:layout_marginStart="105dp"
         android:layout_marginEnd="105dp"
         app:backgroundTint="@null"
-        android:text="Masuk"
+        android:text="Log in"
         tools:ignore="HardcodedText" />
 
     <LinearLayout

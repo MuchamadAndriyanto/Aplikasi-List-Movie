@@ -8,11 +8,15 @@ import com.example.movieflik.model.Result
 import com.example.movieflik.model.ResultX
 import com.example.movieflik.model.TopRatedMovie
 import com.example.movieflik.network.ApiClient
+import com.example.movieflik.network.ApiService
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(private var api : ApiService): ViewModel() {
 
     var livedatamoviePopular : MutableLiveData<List<Result>> = MutableLiveData()
     var livedatamovieTopRated : MutableLiveData<List<ResultX>> = MutableLiveData()
@@ -27,9 +31,8 @@ class HomeViewModel : ViewModel() {
     }
 
     fun getmoviePopular() {
-       ApiClient.instance.getmoviePopular().enqueue(object : Callback<PopularMovie> {
-           override fun onResponse(call: Call<PopularMovie>,
-                                   response: Response<PopularMovie>
+        api.getmoviePopular().enqueue(object : Callback<PopularMovie> {
+           override fun onResponse(call: Call<PopularMovie>, response: Response<PopularMovie>
            ) {
 
                livedatamoviePopular.value = response.body()?.results
@@ -45,9 +48,8 @@ class HomeViewModel : ViewModel() {
     }
 
     fun getmovieToprated() {
-        ApiClient.instance.getmovieTopRated().enqueue(object : Callback<TopRatedMovie> {
-            override fun onResponse(call: Call<TopRatedMovie>,
-                                    response: Response<TopRatedMovie>
+        api.getmovieTopRated().enqueue(object : Callback<TopRatedMovie> {
+            override fun onResponse(call: Call<TopRatedMovie>, response: Response<TopRatedMovie>
             ) {
 
                 livedatamovieTopRated.value = response.body()?.results

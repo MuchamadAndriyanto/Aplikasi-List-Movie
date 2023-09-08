@@ -21,7 +21,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.movieflik.R
 import com.example.movieflik.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
@@ -110,11 +112,15 @@ class ProfileFragment : Fragment() {
 
         binding.btnLogout.setOnClickListener {
             firebaseAuth.signOut()
-            val addUser = sharedpref.edit()
-            addUser.apply()
+            val sharedPref = requireActivity().getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putBoolean("isLoggedIn", false)
+                apply()
+            }
             Toast.makeText(context, "Anda Berhasil Logout", Toast.LENGTH_SHORT).show()
-            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_loginFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_splashFragment)
         }
+
 
         binding.ivBack.setOnClickListener {
             findNavController().popBackStack()

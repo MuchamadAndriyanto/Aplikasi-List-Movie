@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_componen"
-    app:startDestination="@id/homeFragment2">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_homeFragment2_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_homeFragment2_to_akunNoLoginFragment"
+            app:destination="@id/akunNoLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritFragment"
@@ -73,6 +76,9 @@
         <action
             android:id="@+id/action_profileFragment2_to_homeFragment2"
             app:destination="@id/homeFragment2" />
+        <action
+            android:id="@+id/action_profileFragment2_to_splashFragment"
+            app:destination="@id/splashFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -82,4 +88,16 @@
             android:id="@+id/action_detailFragment_to_homeFragment2"
             app:destination="@id/homeFragment2" />
     </fragment>
+    <dialog
+        android:id="@+id/akunNoLoginFragment"
+        android:name="com.example.movieflik.view.AkunNoLoginFragment"
+        android:label="fragment_akun_no_login"
+        tools:layout="@layout/fragment_akun_no_login" >
+        <action
+            android:id="@+id/action_akunNoLoginFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+        <action
+            android:id="@+id/action_akunNoLoginFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </dialog>
 </navigation>

@@ -13,11 +13,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.movieflik.R
 import com.example.movieflik.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     lateinit var binding: FragmentLoginBinding
-    lateinit var sharedpref: SharedPreferences
     lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreateView(
@@ -31,7 +32,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedpref = requireActivity().getSharedPreferences("Register", Context.MODE_PRIVATE)
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.btnLogin.setOnClickListener {
@@ -52,6 +52,11 @@ class LoginFragment : Fragment() {
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful){
                     Toast.makeText(context,"Login Telah Berhasil", Toast.LENGTH_LONG).show()
+                    val sharedPref = requireActivity().getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+                    with(sharedPref.edit()) {
+                        putBoolean("isLoggedIn", true)
+                        apply()
+                    }
                     Navigation.findNavController(binding.root).navigate(R.id.action_loginFragment_to_homeFragment2)
                 }else{
                     Toast.makeText(context, "Email atau Password Kamu Ada Yang Salah",Toast.LENGTH_LONG).show()
@@ -60,5 +65,4 @@ class LoginFragment : Fragment() {
         }
 
     }
-
 }

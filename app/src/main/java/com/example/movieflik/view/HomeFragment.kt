@@ -18,7 +18,9 @@ import com.example.movieflik.model.Result
 import com.example.movieflik.view.adapter.HomeAdapter
 import com.example.movieflik.view.adapter.TopRatedAdapter
 import com.example.movieflik.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding

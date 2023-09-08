@@ -14,7 +14,9 @@ import com.example.movieflik.R
 import com.example.movieflik.databinding.FragmentDetailBinding
 import com.example.movieflik.model.MovieDetail
 import com.example.movieflik.viewmodel.FavoritViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private lateinit var context: Context
