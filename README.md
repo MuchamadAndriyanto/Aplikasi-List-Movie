@@ -9,7 +9,6 @@ MovieApp adalah merupakan sebuah aplikasi yang berguna untuk menampilkan daftar 
 - Firebase Auth
 - Firebase Crashlytics
 - Retrofit
-- Android Jetpack (Datastore, DataBinding, LiveData, ViewModel, Navigation Component, ROOM Database, Dagger Hilt)
+- Android Jetpack (Datastore, DataBinding, LiveData, ViewModel, Navigation Component, ROOM Database)
+- Dagger Hilt
 - Raw
-- Bottom Navigation
-
