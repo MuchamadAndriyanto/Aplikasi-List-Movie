@@ -12,4 +12,6 @@ MovieApp adalah merupakan sebuah aplikasi yang berguna untuk menampilkan daftar 
 - Retrofit
 - Navigaiton Component
 - Room Database
+- Raw
+- Bottom Navigation
 
