@@ -8,8 +8,8 @@ MovieApp adalah merupakan sebuah aplikasi yang berguna untuk menampilkan daftar 
 - MVVM
 - Firebase Auth
 - Firebase Crashlytics
-- Dependency Injection
 - Retrofit
-- Navigaiton Component
-- Room Database
+- Android Jetpack (Datastore, DataBinding, LiveData, ViewModel, Navigation Component, ROOM Database)
+- Dagger Hilt
+- Raw
 
