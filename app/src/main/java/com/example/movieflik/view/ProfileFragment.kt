@@ -97,18 +97,21 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnUpdate.setOnClickListener {
-            val username = binding.usernameEditText.text.toString()
-            val upusername = sharedpref.edit()
-            upusername.putString("username", username)
-            upusername.apply()
+            val newUsername = binding.usernameEditText.text.toString()
+            val currentUsername = sharedpref.getString("username", "")
 
-            userEmail = userEmail ?: ""
-            binding.tvEmail.text = userEmail
+            if (newUsername.isNotEmpty() && newUsername != currentUsername) {
+                val upusername = sharedpref.edit()
+                upusername.putString("username", newUsername)
+                upusername.apply()
 
-            firebaseAuth.signOut()
-            Toast.makeText(context, "Update Username Berhasil", Toast.LENGTH_SHORT).show()
-            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_homeFragment2)
+                Toast.makeText(context, "Update Username Berhasil", Toast.LENGTH_SHORT).show()
+                Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_homeFragment2)
+            } else {
+                Toast.makeText(context, "Username belum berubah", Toast.LENGTH_SHORT).show()
+            }
         }
+
 
         binding.btnLogout.setOnClickListener {
             firebaseAuth.signOut()
@@ -117,6 +120,7 @@ class ProfileFragment : Fragment() {
                 putBoolean("isLoggedIn", false)
                 apply()
             }
+
             Toast.makeText(context, "Anda Berhasil Logout", Toast.LENGTH_SHORT).show()
             Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_splashFragment)
         }
