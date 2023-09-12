@@ -14,12 +14,10 @@ import com.example.movieflik.model.ResultX
 class TopRatedAdapter  (private var listMovieTopRated : List<ResultX>) : RecyclerView.Adapter<TopRatedAdapter.ViewHolder>() {
     class ViewHolder(var binding: ListMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ListMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: TopRatedAdapter.ViewHolder, position: Int) {
         holder.binding.tvTitle.text = listMovieTopRated[position].title
         holder.binding.tvOverview.text = listMovieTopRated[position].overview

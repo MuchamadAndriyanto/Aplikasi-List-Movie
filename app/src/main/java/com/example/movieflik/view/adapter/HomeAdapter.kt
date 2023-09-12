@@ -14,7 +14,6 @@ import com.example.movieflik.model.Result
 class HomeAdapter (private var listMoviePopular : List<Result>) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     class ViewHolder(var binding: ListItemMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =ListItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)

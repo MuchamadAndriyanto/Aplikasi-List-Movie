@@ -13,12 +13,10 @@ import com.example.movieflik.network.local.ItemFavorit
 
 class FavoritAdapter(private var listMovieFav: List<ItemFavorit>) : RecyclerView.Adapter<FavoritAdapter.ViewHolder>() {
     class ViewHolder(var binding: ItemFavBinding) : RecyclerView.ViewHolder(binding.root)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemFavBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: FavoritAdapter.ViewHolder, position: Int) {
         val movie = listMovieFav[position]
 
@@ -44,7 +42,6 @@ class FavoritAdapter(private var listMovieFav: List<ItemFavorit>) : RecyclerView
 
         }
     }
-
     override fun getItemCount(): Int {
         return listMovieFav.size
     }

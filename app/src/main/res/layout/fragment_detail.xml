@@ -145,7 +145,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="7dp"
                                 android:progressTint="@color/colorRating"
-
                                 android:rating="4.5"
                                 android:stepSize="0.5"
 
@@ -205,9 +204,9 @@
                             android:layout_height="35dp"
                             android:src="@drawable/ic_favorite_black"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginTop="-5dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@android:color/transparent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/circle_fav"
                             android:onClick="onFavoritButtonClick"
                             tools:ignore="ContentDescription,UseAppTint" />
 
@@ -225,7 +224,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvRD"
-                            android:text="Alumni"
+                            android:text="10-20-2001"
                             android:layout_marginTop="5dp"
                             android:textColor="@color/favoritColor"
                             android:textSize="12sp" />
@@ -251,7 +250,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvKP"
-                            android:text="woy"
+                            android:text="25263,5"
                             android:layout_marginTop="5dp"
                             android:textColor="@color/favoritColor"
                             android:textSize="12sp" />
@@ -278,9 +277,9 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tvDesc"
                             android:layout_marginTop="5dp"
-                            android:text="deskripsi"
+                            android:text="Overview"
                             android:textColor="@color/white"
-                            android:textSize="14sp" />
+                            android:textSize="13sp" />
 
                     </RelativeLayout>
 
