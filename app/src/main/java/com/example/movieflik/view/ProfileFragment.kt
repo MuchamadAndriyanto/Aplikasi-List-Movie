@@ -70,6 +70,32 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        binding.btnMyInfo.setOnClickListener {
+            if (isDataVisible) {
+                val rotateAnimator = ObjectAnimator.ofFloat(binding.btnClick, "rotation", 90f, 0f)
+                rotateAnimator.duration = 250
+                rotateAnimator.start()
+
+                // Sembunyikan data
+                binding.tvEmail.visibility = View.GONE
+                binding.tvUsername.visibility = View.GONE
+                binding.inputUsername.visibility = View.GONE
+
+                isDataVisible = false
+            } else {
+                val rotateAnimator = ObjectAnimator.ofFloat(binding.btnClick, "rotation", 0f, 90f)
+                rotateAnimator.duration = 250
+                rotateAnimator.start()
+
+                // Tampilkan data
+                binding.tvEmail.visibility = View.VISIBLE
+                binding.tvUsername.visibility = View.VISIBLE
+                binding.inputUsername.visibility = View.VISIBLE
+
+                isDataVisible = true
+            }
+        }
+
         binding.btnClick.setOnClickListener {
             if (isDataVisible) {
                 val rotateAnimator = ObjectAnimator.ofFloat(binding.btnClick, "rotation", 90f, 0f)
