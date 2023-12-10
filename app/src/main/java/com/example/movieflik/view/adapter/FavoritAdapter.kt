@@ -45,4 +45,5 @@ class FavoritAdapter(private var listMovieFav: List<ItemFavorit>) : RecyclerView
     override fun getItemCount(): Int {
         return listMovieFav.size
     }
+
 }

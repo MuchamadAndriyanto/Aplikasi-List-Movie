@@ -1,8 +1,10 @@
 package com.example.movieflik.view.adapter
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -19,10 +21,13 @@ class HomeAdapter (private var listMoviePopular : List<Result>) : RecyclerView.A
         return ViewHolder(view)
     }
 
+    @SuppressLint("ResourceType")
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
 
         Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/w780${listMoviePopular[position].poster_path}")
             .into(holder.binding.ivBackground)
+        val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.drawable.slider_show)
+        holder.itemView.startAnimation(animation)
 
         holder.binding.movieDetail.setOnClickListener {
             val id = listMoviePopular[position].id
