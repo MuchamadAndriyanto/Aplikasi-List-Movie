@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +21,8 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.example.movieflik.R
 import com.example.movieflik.databinding.FragmentProfileBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -140,15 +143,7 @@ class ProfileFragment : Fragment() {
 
 
         binding.btnLogout.setOnClickListener {
-            firebaseAuth.signOut()
-            val sharedPref = requireActivity().getSharedPreferences("dataUser", Context.MODE_PRIVATE)
-            with(sharedPref.edit()) {
-                putBoolean("isLoggedIn", false)
-                apply()
-            }
-
-            Toast.makeText(context, "Anda Berhasil Logout", Toast.LENGTH_SHORT).show()
-            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_splashFragment)
+            logout()
         }
 
 
@@ -158,6 +153,34 @@ class ProfileFragment : Fragment() {
 
         binding.btnCamera.setOnClickListener {
             pickImageFromGallery()
+        }
+    }
+
+    private fun logout() {
+        // Logout dari akun Firebase (jika sedang login dengan Firebase)
+        val firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth.signOut()
+
+        // Logout dari akun Google
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        val googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
+
+        googleSignInClient.signOut().addOnCompleteListener {
+            // Logout dari akun Google berhasil
+            Toast.makeText(context, "Anda Berhasil Logout", Toast.LENGTH_SHORT).show()
+
+            // Hapus status login dari SharedPreferences
+            val sharedPref = requireActivity().getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putBoolean("isLoggedIn", false)
+                apply()
+            }
+
+            // Navigasi ke halaman awal (splash)
+            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment2_to_splashFragment)
         }
     }
 
